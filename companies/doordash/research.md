@@ -56,6 +56,36 @@ The onsite for EMs focuses on **three key areas**, conducted with senior EMs and
 - System design and behavioral performance are the primary leveling signals
 - DoorDash uses levels E3-E7+ for individual contributors; EM is roughly parallel to E6+
 
+### Round 1 - CONFIRMED (Official Prep Kit)
+
+Round 1 consists of two modules:
+
+| Module | Duration | Focus |
+|--------|----------|-------|
+| System Design | 60 min | Architecture for a hypothetical problem (e.g. "Design Twitter") |
+| Team Building & Hiring | 45 min | People leadership, performance management, mentoring |
+
+**System Design - Evaluation Criteria:**
+- **Structure:** Systematic approach, articulate what and why
+- **Comprehensiveness:** Cover all requirements and edge cases
+- **Feasibility:** Solution must be practical and implementable
+- **Scalability:** Capacity to scale with users or broader requirements
+
+**System Design - Tips:**
+- Ask clarifying questions before designing
+- Discuss trade-offs of components explicitly
+- Platform: HackerRank whiteboard (or similar tool you prefer)
+
+**Team Building & Hiring - Topics:**
+- Performance management
+- Partnership with recruiting
+- Best practices for team building
+- Growing and mentoring employees in their careers
+
+**Team Building & Hiring - Tips:**
+- Use STAR method to structure responses
+- Have real-life examples and stories ready
+
 ---
 
 ## 2. Coding Interview Format for EMs
@@ -460,6 +490,10 @@ Even if coding is rare for EMs, being prepared gives you confidence:
 ### System Design
 - [DoorDash System Design Interview Guide - SystemDesignHandbook](https://www.systemdesignhandbook.com/guides/doordash-system-design-interview/)
 - [DoorDash System Design Questions - CodingInterview.com](https://www.codinginterview.com/guide/doordash-system-design-interview-questions/)
+- [DoorDash System Design Interview (YouTube)](https://www.youtube.com/watch?v=Os8sUysCbHU)
+
+### Engineering Manager
+- [DoorDash EM Interview (YouTube)](https://www.youtube.com/watch?v=u6MbVrqrYag)
 
 ### Community / Experience Reports
 - [DoorDash EM Interview - Glassdoor](https://www.glassdoor.com/Interview/DoorDash-Engineering-Manager-Interview-Questions-EI_IE813073.0,8_KO9,28.htm)
