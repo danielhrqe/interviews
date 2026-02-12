@@ -1,0 +1,35 @@
+# Cola Rápida
+
+- Gradient descent: algoritmo que minimiza erro iterativamente
+- Learning rate: tamanho do passo (hiperparâmetro)
+- Overfitting: treino bom, teste ruim (decorou). Resolver: regularização
+- Underfitting: treino ruim, teste ruim (não aprendeu). Resolver: modelo mais complexo
+- Bias alto: underfitting
+- Variance alta: overfitting
+- Cross-validation: treina/testa em múltiplas divisões, score = média
+- L1 (Lasso): zera features inúteis (demite)
+- L2 (Ridge): reduz todos os pesos (corta salário)
+- Data drift: inputs mudaram (novos perfis de imóveis)
+- Concept drift: relação input→output mudou (comportamento mudou)
+- Classificação: prevê categoria (sim/não). Métricas: precision, recall, F1, AUC
+- Regressão: prevê número. Métricas: MAE, RMSE, R²
+- Precision: dos que ACUSOU, quantos ACERTOU
+- Recall: dos que EXISTIAM, quantos PEGOU
+- MAE: erra em média R$ X
+- R²: explica X% da variação
+- RMSE: penaliza erros grandes
+- NDCG: melhores no topo = alto. Enterrados = baixo
+- MRR: posição do 1º bom (posição 1 = 1.0, posição 5 = 0.2)
+- Supervised: tem labels
+- Unsupervised: sem labels, descobre padrões (K-Means)
+- Reinforcement: aprende por recompensa
+- CNN: imagens
+- RNN: sequências/texto em ordem
+- Transformer: atenção seletiva, base dos LLMs
+- Embeddings: texto → vetor numérico, similares ficam perto
+- RAG: LLM + busca em docs reais → reduz alucinação
+- Hiperparâmetro: engenheiro define antes (learning rate, max_depth)
+- Parâmetro: modelo aprende sozinho (pesos)
+- Modelo degradou: checar data quality → drift → retreinar
+- Regressão logística: é CLASSIFICAÇÃO (pegadinha)
+- Acurácia NUNCA pra regressão
