@@ -465,7 +465,72 @@ Even if coding is rare for EMs, being prepared gives you confidence:
 
 ---
 
-## 8. Sources
+## 8. Hello Interview - Reported Questions (Feb 2026)
+
+### System Design — Ranked by Report Count (Hello Interview, Feb 2026)
+
+| # | Question | Reports | Last Asked | Levels | Key Patterns |
+|---|----------|---------|------------|--------|--------------|
+| 1 | **🔴 Food Item Reviews + Payouts** | **37** | **Mid Feb 2026** | Mid-Staff, Manager | Sharded hot counters, Elasticsearch, saga for payouts, purchase verification, fraud prevention, upvote/downvote contention |
+| 2 | **🔴 Donations Website** | **26** | **Early Feb 2026** | Mid-Staff, Manager | Idempotency, circuit breaker, failover payment processor, Redis counters + WebSocket/SSE, state machine (initiated→authorized→captured) |
+| 3 | **🟡 Job Scheduler** | **11** | Late Jan 2026 | Mid-Staff, Manager | Partitioned scheduling, Redis sorted sets, DynamoDB time-bucketed, heartbeats/leases, jittered retries, backpressure |
+| 4 | **🟡 Review + Rewards** | **11** | Mid Jan 2026 | Mid-Staff, Manager-Sr Mgr | Async scoring, saga workflows, Kafka events, denormalization, idempotent payouts with ledger (variação do #1) |
+| 5 | **🟢 Instagram** | **10** | Late Nov 2025 | Mid-Senior, Manager | Precomputed fan-out feeds, direct-to-S3 upload, Kafka fan-out, Redis feed cache, DynamoDB metadata |
+| 6 | 🔵 Metrics Aggregator | 2 | Late Feb 2025 | Manager | Histogram data, time-bucketed aggregation, client library SDK |
+| 7 | 🔵 Scheduler Event Staging | 1 | Late Nov 2025 | Manager | Exactly-once via leasing, state machine, idempotency |
+
+### Coding (2 reports)
+
+| Question | Level | Core Theme | Key Patterns |
+|----------|-------|------------|--------------|
+| **Dasher Payout Classes** | Senior | Calculate driver payouts from delivery events | Temporal event processing, state tracking, sort by timestamp, filter cancelled |
+| **Dasher Picker HashMap** | Senior | Maintain dashers list + random selection | HashMap + O(1) random access |
+
+### ⚠️ Pattern Analysis — What DoorDash ACTUALLY Tests (data-driven)
+
+**#1 THEME: Payments/Payouts + Idempotency (63 combined reports)**
+The two most reported questions BOTH involve payment processing. This is THE topic.
+- Saga pattern for multi-step payouts
+- Idempotency keys to prevent double-charge
+- State machines (initiated → authorized → captured)
+- Circuit breaker + failover payment processors
+- Ledger/audit trail
+
+**#2 THEME: Content + Voting + Hot Counters (48 combined reports)**
+Food reviews with upvote/downvote appear in questions #1 and #4.
+- Sharded counters for hot items (avoid single-row contention)
+- Eventual consistency for vote counts, strong consistency for payouts
+- Elasticsearch for search/ranking
+- Purchase verification to prevent fake reviews
+
+**#3 THEME: Job Scheduling (12 combined reports)**
+- Cron + ad-hoc execution
+- Partitioned by time buckets
+- Redis sorted sets for ready queue
+- Heartbeats, leases, exactly-once
+
+**#4 THEME: Feed/Social (10 reports)**
+- Fan-out on write vs read
+- Precomputed feeds in Redis
+- Media upload direct-to-S3
+
+**CRITICAL INSIGHT:** Delivery dispatch / order tracking / geospatial (our original #1 predicted topic) has ZERO recent reports. The interview has shifted to payments, content platforms, and scheduling.
+
+**For EM level:** Questions #1, #2, and #5 all appeared at Manager level. They test breadth + trade-off reasoning over deep implementation.
+
+### Confirmed from Forums (Reddit, Blind, Prepfully, Feb 2026)
+
+1. **Round 1 = hypothetical problem ONLY** (confirmed). Past project deep dive is onsite only (if there's a Round 2).
+2. **Food Reviews + Donations confirmed as top 2** across all sources.
+3. **Deep dive patterns for Food Reviews:** sharding by item_id (hot shard problem), Elasticsearch for search, saga for payouts, purchase-to-review linkage.
+4. **Deep dive patterns for Donations:** sharding by charity_id, Kafka for traffic surges, PSP timeout scenarios, Redis counters + WebSocket/SSE.
+5. **Other questions reported but less common:** Design TikTok, Design an app for takeaway orders, interest-free installment plan for DoorDash.
+6. **Evaluation criteria (official):** Structure, Comprehensiveness, Feasibility, Scalability.
+7. **Timing tip (Prepfully):** Reach high-level design within first 20-25 min.
+
+---
+
+## 9. Sources
 
 ### Official DoorDash Resources
 - [DoorDash Engineering Interview Resources](https://careersatdoordash.com/blog/doordash-engineering-interview-resources/)

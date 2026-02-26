@@ -1,6 +1,43 @@
-# Wise (formerly TransferWise) Interview Research: Staff Software Engineer
+# Wise (formerly TransferWise) Interview Research: Staff SWE / Engineering Lead
 
-> Compiled: 2026-02-10 | Sources: Glassdoor, Blind, LeetCode Discuss, Wise Careers Blog, Wise Engineering Blog, Educative, SystemDesignHandbook, InterviewQuery, Prepfully, Levels.fyi, The Pragmatic Engineer
+> Compiled: 2026-02-10 | Updated: 2026-02-20
+> Sources: Glassdoor, Blind, LeetCode Discuss, Wise Careers Blog, Wise Engineering Blog, Educative, SystemDesignHandbook, InterviewQuery, Prepfully, Levels.fyi, The Pragmatic Engineer
+> Career Map: https://wise.jobs/engineering-career-map
+
+## 0. Status & Path Options
+
+**Conversa com Director of Engineering (20/fev):** Muito boa. Aguardando agendamento das próximas etapas.
+
+Duas possibilidades:
+- **Engineering Lead (EL1/EL2)** — Manager track
+- **Staff Engineer (IC5)** — IC track
+
+### Engineering Lead 1 (EL1) — £100K-125K
+- Escopo: 1 time, dono do domínio
+- Dono do roadmap técnico do time (tech debt, reliability, security, scalability)
+- Contribui ativamente na execução do dia-a-dia
+- Gerencia performance e wellbeing dos engenheiros
+- Faz entrevistas (~2 candidatos/semana)
+- Expertise técnica mínima: IC3
+
+### Engineering Lead 2 (EL2) — £125K-153K
+- Escopo: 1+ times, líder confiável cross-functional
+- Contribui para visão e estratégia
+- Dono de roadmaps de produto + técnicos
+- Times entregam com qualidade **sem envolvimento diário** dele
+- Planeja crescimento do time com milestones executáveis
+- Expertise técnica mínima: IC4
+
+### Staff Engineer IC5 — £130K-164K
+- Escopo: múltiplos domínios, altamente autônomo
+- Dono de visão/estratégia técnica e de produto de uma área grande
+- Identifica os problemas de maior impacto
+- Dono do roadmap da disciplina técnica **na organização toda**
+- Lidera resolução de incidentes graves (mesmo fora do domínio)
+- Mentora pipeline de IC5+
+- Contribui externamente (talks, blog posts)
+
+---
 
 ---
 
@@ -300,9 +337,11 @@ Understanding Wise's stack helps in both coding and system design interviews.
 | IC1 | Junior Engineer | Small, well-defined tasks with team support |
 | IC2 | Engineer | Independent execution, medium-sized projects |
 | IC3 | Senior Engineer | Domain expert, technical roadmap ownership, mentoring |
-| **IC4** | **Staff Engineer** | **Deep expertise, owns large impactful projects, drives technical + product roadmaps** |
-| IC5 | Principal Engineer | Multi-domain expert, leads solutions to biggest problems across squads |
-| IC6 | Distinguished Engineer | Company-wide strategy, shapes engineering standards |
+| IC4 | Senior Engineer+ | Deep expertise, owns large impactful projects, drives technical + product roadmaps |
+| **IC5** | **Staff Engineer** | **Multi-domain expert, leads solutions to biggest problems across squads** |
+| IC6 | Principal Engineer | Company-wide strategy, shapes engineering standards |
+| EL1 | Engineering Lead 1 | Owns 1 team domain, manages delivery + people (min IC3 expertise) |
+| EL2 | Engineering Lead 2 | Owns 1+ teams, cross-functional leader (min IC4 expertise) |
 
 ### Staff Engineer (IC4) Expectations
 - **Consistently own large-sized impactful projects**
@@ -428,7 +467,61 @@ Understanding Wise's stack helps in both coding and system design interviews.
 
 ---
 
-## 11. Key Sources & Links
+## 11. Hello Interview - Reported Questions (Feb 2026)
+
+### System Design (2 reports)
+
+| Question | Level | Core Theme | Key Patterns |
+|----------|-------|------------|--------------|
+| **Merchant Payout System** | Staff | 10K TPS payments → periodic merchant payouts | Append-only ledger (double-entry), Kafka ingestion, idempotency keys, saga-based payouts, periodic snapshots, reconciliation |
+| **Job Scheduler** | Senior | 10K jobs/sec, cron + ad-hoc, retry, history | Partitioned scheduling, Redis sorted sets, DynamoDB, heartbeats/leases, backpressure |
+
+### Behavioral (1 report)
+
+| Question | Level | Type |
+|----------|-------|------|
+| **"What project are you most proud of?"** | Senior | Behavioral → Use H1 (0→21 team, global platform) |
+
+### Pattern Analysis — What Wise Actually Tests
+
+**Dominant themes:**
+1. **Financial correctness** — ledger, double-entry, idempotency, audit trail (core Wise DNA)
+2. **Append-only/immutable data** — no mutable balance rows, snapshot + event log
+3. **Saga pattern for payouts** — idempotent steps, compensation for failures
+4. **High-throughput ingestion** — Kafka buffering, stateless frontends, dedup
+
+**Key insight for pair programming:** The Merchant Payout is SD, but the financial patterns (idempotency, event processing, state machines) could appear as coding problems too. Practice implementing:
+- Idempotency key checking
+- Event processing with state tracking
+- Simple ledger/balance calculation from events
+
+**Alignment with research:** Merchant Payout = Wise's actual business. This is the most likely SD topic.
+
+### Pair Programming — Confirmed Problems from Forums (Reddit, Blind, Glassdoor, JoinTaro)
+
+| Problem | Description | Difficulty | Source |
+|---------|-------------|------------|--------|
+| **Circuit Breaker** | Implement in `WebClient.execute(Request)`: 3 fails in 10 min → stop 5 min | Medium | Glassdoor/JoinTaro Dec 2024 (got offer) |
+| **Currency Converter/Exchange** | Send/receive money, refactor for edge cases | Easy-Medium | Glassdoor 2024-2025 |
+| **Simple Cache** | Implement a cache | Easy-Medium | Glassdoor 2024 |
+| **Rate Limiter** | Design + implement, concurrency | Medium | Blind 2024 |
+| **Sorting Two Lists of Intervals** | Merge/sort interval lists | Medium | Blind/Glassdoor |
+| **Code Refactoring** | Given existing code → "How would you improve this?" | Medium | JoinTaro Oct 2025 |
+| **Integer to Roman** | Classic conversion | Easy-Medium | Glassdoor |
+| **Find Pairs** | Finding pairs in array | Easy | Glassdoor |
+| **Currency Exchange Service** | Exchange service + resiliency, cost, performance | Medium | Glassdoor 2024-2025 |
+
+### ⚠️ Key Insights from Forums
+
+1. **Refactoring variant exists** (Oct 2025): You receive existing code and improve it. Not always from-scratch.
+2. **Speed matters**: Oct 2025 rejected candidate said "tasks weren't difficult, but I was working more slowly than I'd hoped."
+3. **11% pass rate** for SE in London (JoinTaro, 27 data points) — extremely selective.
+4. **Requirements change mid-problem**: They give base problem, then alter requirements to see how you adapt.
+5. **Java is default** — MUST confirm with recruiter if Python is ok. Interviewers are Java engineers.
+
+---
+
+## 12. Key Sources & Links
 
 ### Official Wise Resources
 - [Wise Interviews Overview](https://wise.jobs/step-2-interview)
