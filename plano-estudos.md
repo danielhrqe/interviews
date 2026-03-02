@@ -1,516 +1,537 @@
-# Plano de Estudos - Fev/Mar 2026
+# Plano de Estudos — Semana 27/fev - 5/mar 2026
 
-> **Atualizado: 23/fev/2026** — Plano definitivo com Hello Interview data + fóruns + metodologia hands-on
-> **Estilo de aprendizagem:** Aprende fazendo, escrevendo e desenhando. Mínimo de leitura passiva.
-
----
-
-## Visão Geral
-
-| Período | Foco | Entrevista |
-|---------|------|------------|
-| 23-26 fev | DoorDash (System Design + Leadership) | **Qui 26/fev 15h** |
-| 24-27 fev | Wise (Pair Programming prep) | **Sex 27/fev 11h BRT** |
-| 28 fev - 1 mar | QuintoAndar SD/ML | **2/mar 12h** |
-| 2-3 mar | Nubank Architecture | **4/mar 10h** |
-| 4-8 mar | QuintoAndar Coding | **9/mar 10h** |
+> **4 entrevistas em 4 dias consecutivos.**
+> DoorDash FEITO (26/fev). Lição: preparar TODOS os problemas, defender decisões com dados.
+> Atualizado: 26/fev/2026
 
 ---
 
-## Metodologia: Learn by Doing
+## Agenda da Semana
 
-> Você NÃO vai só ler. Cada bloco tem uma entrega concreta.
-
-| Método | Como funciona | Exemplo |
-|--------|--------------|---------|
-| **DESENHAR** | Diagrama à mão/draw.io de cada sistema. Sem copiar — do zero, de memória. | Desenhar Food Reviews: client → API → Kafka → ... |
-| **ESCREVER** | Resumo em 5 bullet points com suas palavras depois de cada leitura. Sem colar. | "Saga = cada step idempotent, se falhar → compensation" |
-| **CODIFICAR** | Implementar padrões em Python. Não ler sobre — FAZER. | Implementar circuit breaker com classes em Python |
-| **FALAR** | Explicar em voz alta em inglês como se fosse a entrevista. Gravar se possível. | "I would use Redis sorted sets because..." |
-| **QUIZ** | Comigo, sem consulta, em inglês. Erro = gap identificado. | "What happens if the payment processor times out?" |
-
----
-
-## Progresso até agora (19-23/fev)
-
-### Feito
-- [x] 6 histórias STAR montadas
-- [x] Mock leadership #1 (borderline) + #2 (Hire, borderline Strong Hire)
-- [x] Pesquisa cross-company system design
-- [x] Hello Interview: How to Prepare, Core Concepts, Key Technologies, Patterns
-- [x] Hello Interview: **Local Delivery Service** (Easy)
-- [x] Hello Interview: **Uber** (Hard)
-- [x] Hello Interview: **Rate Limiter** (Medium)
-- [x] Review/recall + prática no Hello Interview (23/fev manhã)
-- [x] Google HR Chat (23/fev 11h)
-- [x] Research completo: Hello Interview reports + Reddit/Blind/Glassdoor
-
-### Pendente (incorporado no plano abaixo)
-- [ ] Hello Interview: **Job Scheduler** (Hard)
-- [ ] Hello Interview Patterns: Dealing with Contention, Multi-step Processes, Real-time Updates
-- [ ] Hello Interview Technologies: Kafka, Redis, Elasticsearch
-- [ ] Mock System Design #1 e #2
-- [ ] Leadership em voz alta + STAR stories cronometradas
-- [ ] Wise: implementar problemas em Python (circuit breaker, intervals)
+| Dia | Entrevista | Horário | Formato |
+|-----|-----------|---------|---------|
+| Sex 27/fev | — | — | Descanso + início prep QA ML |
+| Sáb 28/fev | — | — | Prep intensiva: QA ML + Wise coding |
+| Dom 1/mar | — | — | QA ML final + Nubank início |
+| **Seg 2/mar** | **QuintoAndar ML** | **12:00-13:00** | Figma/Miro, ML/DL/GenAI + business case, SEM código |
+| **Ter 3/mar** | **Wise Pair Programming** | **08:30-09:30** | HackerRank CodePair, Python, colaborativo |
+| **Qua 4/mar** | **Nubank Architecture** | **10:00-11:00** | Miro, 2 engenheiros, colaborativo |
+| **Qui 5/mar** | **Circle bate-papo** | TBD | Conversa informal 45min, zero prep |
 
 ---
 
-## ⚠️ O que REALMENTE cai (dados de 100+ reports)
+# ENTREVISTA 1: QuintoAndar ML (Seg 2/mar 12h)
 
-### DoorDash SD — Top Questions
+## Formato
+- 1h, Google Meet + Figma/Miro
+- Perguntas técnicas diretas: ML, Deep Learning, GenAI
+- Business case (SEM código)
+- Colaborativo — perguntar e discutir
+- **Desabilitar ferramentas de IA** antes da call
 
-| # | Question | Reports | Temas-chave |
-|---|----------|---------|-------------|
-| 1 | **Food Reviews + Payouts** | **37** | Sharded counters, Elasticsearch, saga payouts, fraud |
-| 2 | **Donations Website** | **26** | Idempotency, circuit breaker, failover PSP, live counters |
-| 3 | **Job Scheduler** | **11** | Redis sorted sets, partitioning, leases, backpressure |
-| 4 | **Review + Rewards** | **11** | Variação do #1 |
-| 5 | **Instagram** | **10** | Fan-out feeds, media upload |
+## O que avaliam
+1. **Decomposição** — quebrar problema em partes menores
+2. **Trade-offs** — justificar escolhas com prós/contras
+3. **Napkin math** — dimensionar componentes
+4. **Design iterativo** — começar simples, melhorar
+5. **Fundamentos** — ML, DL, GenAI, MLOps
 
-**Tema transversal:** Payments/idempotency/saga aparece em TUDO.
+## Pergunta mais reportada (Glassdoor)
+> "Como você construiria um sistema para rankear imóveis para um usuário desconhecido (não logado)?"
 
-### Wise Pair Programming — Problems Confirmed
+## ML Flashcards (self-test, sem consulta)
 
-| Problem | Difficulty | Estilo |
-|---------|-----------|--------|
-| Circuit Breaker | Medium | OOP, state management |
-| Currency Converter | Easy-Medium | Clean code, edge cases |
-| Rate Limiter | Medium | HashMap, time-based |
-| Intervals (merge/sort) | Medium | Arrays, sorting |
-| Code Refactoring | Medium | Recebe código → melhora |
+| # | Pergunta | Resposta |
+|---|----------|---------|
+| 1 | Supervised vs Unsupervised? | Supervised: tem labels (classificação, regressão). Unsupervised: descobre padrões (clustering) |
+| 2 | Overfitting? | Modelo decorou treino. Train 99%, test 60%. Fix: regularização, dropout, mais dados, early stopping |
+| 3 | Underfitting? | Modelo não aprendeu. Train 55%, test 50%. Fix: mais complexidade, mais features, menos regularização |
+| 4 | Bias-Variance? | High Bias = underfitting. High Variance = overfitting. Goal: balancear |
+| 5 | L1 vs L2? | L1 (Lasso): zera features inúteis. L2 (Ridge): shrink all weights |
+| 6 | Precision? | Dos que acusei, quantos estavam certos? TP/(TP+FP) |
+| 7 | Recall? | Dos que existiam, quantos peguei? TP/(TP+FN) |
+| 8 | F1 Score? | Média harmônica Precision × Recall. Usa quando classes desbalanceadas |
+| 9 | AUC-ROC? | Capacidade separar classes. 0.5=random, 1.0=perfeito |
+| 10 | Cross-validation? | K-fold: divide dados em K partes, treina K vezes rotacionando test set |
+| 11 | Gradient descent? | Minimiza erro iterativamente. LR alto: oscila. LR baixo: lento |
+| 12 | Data Drift vs Concept Drift? | Data: distribuição dos inputs mudou. Concept: relação input→output mudou |
+| 13 | Embeddings? | Texto/items → vetor numérico. Similares ficam próximos no espaço |
+| 14 | Transformer/Attention? | Self-attention: cada token "olha" todos os outros. Base dos LLMs |
+| 15 | RAG? | LLM + busca em docs reais → reduz alucinação. Chunks → embed → retrieve → generate |
+| 16 | Fine-tuning vs RAG? | Fine-tuning: adapta modelo (caro, precisa dados). RAG: adiciona contexto externo (mais barato, atualizado) |
+| 17 | Ensemble? | Combina vários modelos. Random Forest (bagging), XGBoost (boosting) |
+| 18 | Feature Store? | Repositório centralizado de features. Offline (batch, S3) + Online (low-latency, Redis/Cassandra) |
+| 19 | A/B Testing ML? | Modelo novo vs baseline. Métricas: conversão, latência, business metric. Significance test |
+| 20 | Cold Start? | Usuário/item novo sem histórico. Fix: popularity, content-based, context features |
 
-**Tema transversal:** Clean code + OOP > algoritmos. Velocidade importa. Requirements mudam mid-problem.
+## ML System Design Framework (7 steps)
 
----
+| Step | Tempo | O que |
+|------|-------|-------|
+| 1. Problem Framing | 5 min | Business → ML problem. Classification? Regression? Ranking? |
+| 2. Data | 5 min | Que dados existem? Volume? Qualidade? Labeling? |
+| 3. Features | 5 min | Feature engineering. Online vs offline. Feature store? |
+| 4. Model | 5 min | Baseline → simple → complex. Por que este modelo? |
+| 5. Training | 5 min | Pipeline: data → features → train → evaluate → register |
+| 6. Serving | 5 min | Batch vs online inference. Latency. A/B testing. Canary |
+| 7. Monitoring | 5 min | Model perf + data quality + infra. Drift → retrain trigger |
 
-## SEG 23/FEV — 14:00-18:30 (4.5h)
+## Business Case: Ranking de Imóveis (provável)
 
-### BLOCO 1: Quiz Recall (14:00-14:30) — 30 min
-**Método: FALAR (em inglês, comigo, sem consulta)**
+**Cold start (usuário não logado):**
+- Popularity-based: imóveis mais vistos/contactados na região
+- Location-based: lat/long do request, raio
+- Context features: hora do dia, device, cidade
+- Trending: recém-publicados com boa performance
 
-Quiz sobre o que você já leu:
-- Framework 7 steps de SD (listar de memória)
-- Napkin math: QPS de 1M req/day? Storage de 1KB × 1B?
-- Uber: como funciona matching? Que DB para locations?
-- Rate Limiter: sliding window vs token bucket? Onde fica?
-- Delivery Service: state machine de um pedido?
+**Features do imóvel:**
+- Preço, localização, tipo (apt/casa), quartos, área, fotos (quantidade/qualidade)
+- Recência da publicação, popularidade (views, contacts), reviews
+- Amenities (piscina, garagem, pet-friendly)
 
-> **Entrega:** Score + lista de gaps
+**Modelo:**
+- Baseline: sort by popularity × recência
+- V1: Gradient Boosting (XGBoost) com features tabulares
+- V2: Embedding do imóvel + user embedding (collaborative filtering)
+- V3: Two-tower model (user tower + item tower → dot product)
 
----
+**Métricas:** CTR, conversion (contato→visita→contrato), time-to-rent, NDCG
 
-### BLOCO 2: Hello Interview — Contention + Multi-step + Kafka (14:30-16:00) — 1.5h
-**Método: LER → ESCREVER → DESENHAR**
+**Pipeline:** Collect data → Feature eng → Train → A/B test → Deploy → Monitor drift
 
-**14:30-15:00 — Ler no Hello Interview (30 min):**
-- [ ] Pattern: **Dealing with Contention** (~10 min)
-- [ ] Pattern: **Multi-step Processes** (~10 min)
-- [ ] Technology: **Kafka** (~10 min)
+## RAG Architecture (já caiu no tech screening!)
 
-**15:00-15:20 — Escrever resumos (20 min):**
-Depois de cada leitura, fechar a aba e escrever de memória:
-- [ ] Contention: 5 bullet points (o que é, quando acontece, como resolver)
-- [ ] Multi-step/Saga: 5 bullet points (por que, idempotency, compensation)
-- [ ] Kafka: 5 bullet points (quando usar, partitions, consumer groups, guarantees)
+```
+User Query → [Embedding Model] → Query Vector
+  → [Vector DB Search] → Top K chunks
+  → [Reranking] → Best chunks
+  → [Context Assembly] → Query + Chunks + System Prompt
+  → [LLM Inference] → Response
+  → [Guardrails] → Final Answer
+```
 
-**15:20-16:00 — Desenhar Food Reviews system (40 min):**
-Com base no que leu + breakdown que você tem, desenhar do zero (draw.io ou papel):
-- [ ] Diagrama completo do Food Reviews + Payouts
-- [ ] Marcar onde entra Kafka, Redis, Elasticsearch
-- [ ] Marcar onde está o saga pattern para payouts
-- [ ] Marcar onde estão os sharded counters
-- [ ] Anotar: que pergunta o entrevistador faria aqui? (deep dive points)
+**Componentes:** Chunking (overlap), Embedding model (ada-002/e5), Vector DB (pgvector/Pinecone), Reranker, LLM, Evaluation (faithfulness, relevance)
 
-> **Entrega:** 3 resumos escritos + 1 diagrama desenhado do zero
+## MLOps — Pipeline End-to-End
 
----
+```
+Data Sources → Feature Store → Training Pipeline → Model Registry
+  → Serving (batch/real-time) → Monitoring → Retrain Trigger
+```
 
-### BLOCO 3: Mock System Design #1 comigo (16:00-17:30) — 1.5h
-**Método: FALAR + DESENHAR (simulação real)**
+**Monitoring:** data drift (PSI, KS test), concept drift (model metrics decay), infra (latency, errors)
+**CI/CD ML:** data validation → train → evaluate → register → canary deploy → full rollout
 
-- [ ] 60 min de mock com timer — eu sou o entrevistador DoorDash
-  - Problema: **Food Reviews + Payouts** OU **Donations Website**
-  - Você desenha no draw.io/papel enquanto fala
-  - Eu interrompo, faço deep dive, peço trade-offs (como DoorDash faz)
-- [ ] 30 min feedback:
-  - O que faltou?
-  - Onde hesitou?
-  - O que o entrevistador pediria mais detalhes?
-  - Score 1-10
+## Stack QuintoAndar (mencionar naturalmente)
+- Airflow (orquestração), Spark/Databricks (processamento), Kafka (streaming)
+- Feature Store próprio (Butterfree, open-source), MLflow, Kubeflow, AWS
+- ~8M registros/dia de monitoramento de modelos
+- Python (ML), Java/Kotlin (backend)
+- GenAI: LangChain, LangGraph, Azure OpenAI
 
-> **Entrega:** Design completo + feedback escrito + gaps identificados
+## Comparação: Sua Stack vs QA Stack
+| Componente | Sua plataforma | QuintoAndar |
+|-----------|---------------|-------------|
+| Compute | Databricks/Spark on K8s | Databricks (Spark) |
+| Orchestration | Airflow (4K+ DAGs) | Airflow (Cloud Composer) |
+| Model Serving | K8s + ArgoCD | K8s-based |
+| Experiment Tracking | MLflow | MLflow |
+| IaC | Terraform/Terragrunt | Infrastructure as Code |
 
----
+**Seu ângulo forte:** construiu plataforma de ML do zero para 600+ usuários. Frame: "How I build this to scale for 20+ data scientists"
 
-### BLOCO 4: Leadership em voz alta (17:30-18:30) — 1h
-**Método: FALAR (em inglês, cronometrado)**
-
-**17:30-18:00 — STAR stories (30 min):**
-- [ ] H1 (Team building 0→21) — falar em voz alta, cronometrar. MAX 3 min.
-- [ ] H3 (Firing) — falar em voz alta, cronometrar. MAX 2.5 min.
-- [ ] H5 (Diversity) — falar em voz alta, cronometrar. MAX 2 min.
-- Se qualquer uma passar do tempo: cortar, renarrar mais curta.
-
-**18:00-18:30 — Respostas rápidas (30 min):**
-- [ ] "Ignore the underperformer" — falar em voz alta, max 1 min
-- [ ] "Why DoorDash?" — falar em voz alta, max 1 min
-- [ ] "Tell me about a conflict" — H6, falar em voz alta, max 2.5 min
-
-> **Entrega:** Cada história cronometrada. Anotar: qual ficou longa? Qual ficou confusa?
-
----
-
-### REVIEW noite (15 min)
-- [ ] Escrever 3 bullet points: aprendi / errei / revisar amanhã
-- [ ] Olhar gaps do mock → o que estudar terça
-
----
-
-## TER 24/FEV — Dia intenso (DoorDash final + Wise início)
-
-### RECALL (9:00-9:30) — 30 min
-**Método: QUIZ comigo, sem consulta, em inglês**
-
-- Redesenhar de memória o diagrama de Food Reviews (em 5 min, no papel)
-- Quiz: idempotency key — o que é? Onde coloca? O que acontece sem?
-- Quiz: saga pattern — 3 steps de um payout, como compensa falha?
-- Quiz: gaps do mock de ontem (o que faltou?)
-
-> **Entrega:** Score + diagrama de memória
-
----
-
-### ABSORVER + DESENHAR (9:30-11:30) — 2h
-**Método: LER → ESCREVER → DESENHAR**
-
-**9:30-10:00 — Hello Interview: Job Scheduler breakdown (30 min)**
-- [ ] Ler o breakdown completo
-- [ ] Fechar e escrever 5 bullet points de memória
-
-**10:00-10:30 — Hello Interview: Redis + Real-time Updates (30 min)**
-- [ ] Ler Technology: **Redis** (~15 min)
-- [ ] Ler Pattern: **Real-time Updates** (~15 min)
-- [ ] Escrever: quando Redis vs Kafka? Quando WebSocket vs SSE vs polling?
-
-**10:30-11:00 — Desenhar Donations Website do zero (30 min)**
-- [ ] Diagrama completo sem consultar nada
-- [ ] Marcar: idempotency keys, state machine, failover PSP, live counters
-- [ ] Comparar com o breakdown → o que faltou?
-
-**11:00-11:30 — Hello Interview: Elasticsearch (30 min)**
-- [ ] Ler Technology: **Elasticsearch** (~15 min)
-- [ ] Escrever: quando usar ES vs SQL? Inverted index = o quê?
-- [ ] Anotar: como ES se encaixa no Food Reviews?
-
-> **Entrega:** Job Scheduler resumo + Donations diagrama + tech summaries
+## Perguntas para fazer ao entrevistador
+1. "How does the ML Platform team collaborate with Data Scientists on model deployment?"
+2. "What's the biggest challenge in scaling ML monitoring right now?"
+3. "How do you handle the cold start problem for new property listings?"
 
 ---
 
-### APLICAR: Mock SD #2 (13:30-15:00) — 1.5h
-**Método: FALAR + DESENHAR (simulação real)**
+# ENTREVISTA 2: Wise Pair Programming (Ter 3/mar 08:30)
 
-- [ ] 60 min mock com timer — problema DIFERENTE do #1
-  - Se ontem foi Food Reviews → hoje Donations Website (ou vice-versa)
-  - Se sobrar confiança: Job Scheduler
-- [ ] 30 min feedback: comparar com mock #1. Melhorou onde?
+## Formato
+- 1h, HackerRank CodePair, Python (confirmar com recruiter!)
+- Pair programming colaborativo com 1 engenheiro
+- NÃO é LeetCode — problemas práticos/domain-relevant
+- Requirements podem MUDAR no meio do problema
+- **Velocidade importa** (candidato rejeitado por lentidão)
+- 11% pass rate em London — altamente seletivo
 
-> **Entrega:** Design #2 completo + comparação com #1
+## O que avaliam (4 dimensões)
+1. **Colaboração & Comunicação** — pensar em voz alta, perguntar, discutir
+2. **Arquitetura** — organização de código, decisões de design, trade-offs
+3. **Problem Solving** — abordagem estruturada, adaptabilidade
+4. **Code Quality** — SOLID, DRY, KISS, nomes claros, testabilidade
 
----
+## Problemas confirmados (Glassdoor/Blind/JoinTaro)
 
-### APLICAR: Mock Leadership #3 (15:00-16:00) — 1h
-**Método: FALAR (simulação completa em inglês)**
+| Problema | Dificuldade | O que testa |
+|----------|-------------|-------------|
+| **Circuit Breaker** | Medium | OOP, state machine, time-based logic |
+| **Currency Converter** | Easy-Medium | Clean code, edge cases, domain Wise |
+| **Rate Limiter** | Medium | HashMap, concurrency, time |
+| **Sorting Intervals** | Medium | Arrays, sorting, merge |
+| **Code Refactoring** | Medium | Recebe código existente → melhora |
+| **Integer to Roman** | Easy-Medium | Implementação limpa |
 
-- [ ] 45 min mock: eu sou o entrevistador DoorDash, Team Building & Hiring
-  - Vou cobrir: team building, underperformer, coaching, diversity, conflict
-  - Vou interromper e pedir follow-ups como entrevistador real
-- [ ] 15 min feedback: score 1-10, gaps, o que melhorar
+## Estratégia na entrevista
+1. Ler problema → perguntar clarificações ANTES de codar
+2. Explicar abordagem em 1-2 frases antes de implementar
+3. Começar simples → funcionar → refatorar
+4. **Pensar em voz alta O TEMPO TODO**
+5. Quando requirements mudam: "OK, let me think about how this changes things..."
+6. Edge cases: empty input, single element, duplicates
 
-> **Entrega:** Score + 3 melhorias específicas
+## SOLID Principles (decorar)
+- **S**ingle Responsibility — cada classe faz UMA coisa
+- **O**pen/Closed — aberto para extensão, fechado para modificação
+- **L**iskov Substitution — subclasse substitui pai sem quebrar
+- **I**nterface Segregation — interfaces pequenas e específicas
+- **D**ependency Inversion — dependa de abstrações, não implementações
 
----
+## Circuit Breaker — Template Mental
 
-### WISE PREP: Coding hands-on (16:30-18:30) — 2h
-**Método: CODIFICAR (Python, OOP, pair programming style)**
+```
+States: CLOSED → OPEN → HALF_OPEN → CLOSED
 
-**16:30-17:00 — Hello Interview Coding: Intervals Overview (30 min)**
-- [ ] Ler HI Coding: **Intervals Overview** (conceito)
-- [ ] Resolver: **Merge Intervals** no Hello Interview (praticar)
+CLOSED: requests passam. Conta falhas. Se falhas >= threshold em window → OPEN
+OPEN: requests bloqueados. Após timeout → HALF_OPEN
+HALF_OPEN: permite 1 request. Se sucesso → CLOSED. Se falha → OPEN
 
-**17:00-18:00 — Implementar Circuit Breaker em Python (1h)**
-- [ ] Implementar do zero, sem consultar:
-  - Classe `CircuitBreaker` com states: CLOSED, OPEN, HALF_OPEN
-  - Config: failure_threshold, timeout, recovery_timeout
-  - Método `execute(request)` que monitora falhas
-  - Transições de estado automáticas
-- [ ] Escrever pelo menos 3 test cases
-- [ ] Refatorar: aplicar SOLID, renomear, limpar
-- [ ] Praticar: explicar o código em voz alta em inglês enquanto escreve
+Config: failure_threshold=3, window=10min, recovery_timeout=5min
+```
 
-**18:00-18:30 — Implementar Rate Limiter simplificado (30 min)**
-- [ ] Sliding window rate limiter em Python
-- [ ] Pensar em voz alta enquanto codifica
-- [ ] Discutir: O(1) vs O(n)? Thread-safe? Como testar?
+## Rate Limiter — Template Mental
 
-> **Entrega:** 2 implementações Python (circuit breaker + rate limiter) + testes
+```
+Token Bucket: bucket com N tokens. Cada request consome 1.
+  Refill: adiciona tokens a cada intervalo.
+  Se bucket vazio → reject.
 
----
+Sliding Window: HashMap[user_id] → list of timestamps.
+  Remove timestamps fora da window. Count < limit → allow.
+```
 
-### REVIEW noite (15 min)
-- [ ] 3 bullet points: aprendi / errei / revisar
-- [ ] Comparar mock #1 vs #2: onde melhorou?
-- [ ] Quão confiante estou para DoorDash? (1-10)
+## Merge Intervals — Template Mental
 
----
+```python
+intervals.sort(key=lambda x: x[0])
+merged = [intervals[0]]
+for start, end in intervals[1:]:
+    if start <= merged[-1][1]:
+        merged[-1][1] = max(merged[-1][1], end)
+    else:
+        merged.append([start, end])
+```
 
-## QUA 25/FEV — Descanso ativo + Wise polish
+## Collections Python (ter na cabeça)
 
-### MANHÃ: DoorDash revisão final (9:00-10:00) — 1h max
-**Método: DESENHAR + FALAR (tudo de memória)**
+```python
+from collections import Counter, defaultdict, deque
 
-**9:00-9:20 — Desenhar 2 diagramas de memória (20 min)**
-- [ ] Food Reviews + Payouts — diagrama completo, sem consulta, 10 min
-- [ ] Donations Website — diagrama completo, sem consulta, 10 min
-- Comparar com seus diagramas de seg/ter. Se lembrou de tudo → pronto.
+Counter([1,2,2,3,3,3])     # {3:3, 2:2, 1:1}
+defaultdict(list)           # missing key → []
+defaultdict(int)            # missing key → 0
+deque()                     # O(1) append/pop both ends
+# NUNCA use list.pop(0) — é O(n)!
+```
 
-**9:20-9:40 — Falar respostas de memória (20 min)**
-- [ ] 5 números-chave — dizer em voz alta sem olhar
-- [ ] "Why DoorDash?" — 1 min sem parar
-- [ ] "Ignore underperformer" — 1 min sem parar
-- [ ] H1 resumida — 2 min sem parar
-
-**9:40-10:00 — Checklist final DoorDash (20 min)**
-- [ ] Revisar MASTER-PREP: checklist respostas (só olhar, já sabe)
-- [ ] Revisar napkin math (só olhar)
-- [ ] Anotar 3 coisas que quer lembrar na hora (cola mental)
-
-> **Entrega:** 2 diagramas de memória + checklist mental pronto
-
----
-
-### TARDE: Wise pair programming prep (14:00-16:00) — 2h
-**Método: CODIFICAR (pair programming simulation comigo)**
-
-**14:00-15:00 — Mock pair programming comigo (1h)**
-- [ ] Eu dou um problema estilo Wise (não vou dizer qual antes)
-- [ ] Você codifica em Python no seu editor
-- [ ] Pensa em voz alta em inglês O TEMPO TODO
-- [ ] Eu faço perguntas como interviewer: "Why did you choose this?" "What about edge case X?"
-- [ ] Eu mudo os requirements no meio (como Wise faz!)
-- [ ] 45 min coding + 15 min feedback
-
-**15:00-15:30 — Hello Interview Coding: Stack Overview + Valid Parentheses (30 min)**
-- [ ] Ler Overview de Stack (~5 min)
-- [ ] Resolver Valid Parentheses no HI
-- [ ] Relevante: Wise pede problemas práticos, stack é padrão
-
-**15:30-16:00 — Hello Interview Coding: Two Pointers Overview (30 min)**
-- [ ] Ler Overview (~5 min)
-- [ ] Resolver Move Zeroes ou Container With Most Water no HI
-- [ ] Estes padrões aparecem em problemas de intervals/arrays da Wise
-
-> **Entrega:** 1 mock pair programming completo + 2 problemas resolvidos
+## Perguntas para fazer ao entrevistador
+1. "How do engineers at Wise balance product work with technical debt?"
+2. "What does ownership look like in practice for a Staff Engineer?"
+3. "What's the most interesting technical challenge your team faced recently?"
 
 ---
 
-### SETUP (16:00-16:30)
-- [ ] Testar câmera, mic, internet
-- [ ] Abrir HackerRank CodePair — navegar, entender interface
-- [ ] Preparar ambiente: sala quieta, água, celular silenciado
-- [ ] Testar setup para DoorDash (HackerRank whiteboard + Zoom)
+# ENTREVISTA 3: Nubank Architecture (Qua 4/mar 10h)
 
-### NOITE
-- [ ] Descansar. Nada de estudo novo.
-- [ ] Se quiser: ouvir um podcast leve ou assistir algo relaxante
-- [ ] Dormir cedo (23h no máximo)
+## Formato
+- 1h, Miro (ou Draw.io/Google Drawings)
+- 2 engenheiros Nubank — MUITO colaborativo
+- Problema hipotético → desenhar arquitetura juntos
+- NÃO precisa "terminar" — processo > resultado
+- Introdução pessoal: MAX 5 minutos
 
----
+## O que avaliam
+1. **Colaboração** — como trabalha em grupo, dá sugestões, aceita feedback
+2. **Trade-offs** — complexidade vs performance vs custo vs simplicidade
+3. **Comunicação** — explicar raciocínio de cada decisão
+4. **Flexibilidade** — solução sustentável e escalável
+5. **Perguntas** — eles QUEREM que você pergunte
 
-## QUI 26/FEV — DIA DA ENTREVISTA DOORDASH 🎯
+## Dicas do PDF oficial Nubank
+- **Não tenha medo de dizer que não sabe**
+- Traga sugestões e opiniões sobre a solução
+- É colaboração, não apresentação
+- Whiteboard = facilitador de comunicação, não precisa ser bonito
+- **Pare a cada ~10 min** para avaliar o que foi feito e o que melhorar
+- Foco no processo de construção da solução
 
-### Manhã (30 min, 9:00-9:30)
-**Método: OLHAR (não estudar)**
-- [ ] Olhar diagrama de Food Reviews (que você desenhou)
-- [ ] Olhar diagrama de Donations (que você desenhou)
-- [ ] 5 números (dizer em voz alta 1x)
-- [ ] Framework 7 steps (olhar 1x)
-- [ ] ⚠️ ZERO conteúdo novo. Confiança > conhecimento neste ponto.
+## Problemas confirmados (Glassdoor)
 
-### Almoço tranquilo (12:00-13:30)
-- Comida leve, hidratação, banho
-- Se ansioso: respiração 4-7-8 (inspirar 4s, segurar 7s, expirar 8s)
+| Problema | Detalhes | Probabilidade |
+|----------|----------|---------------|
+| **Event Feed** | Feed de eventos/transações, persistência offline, sync, ordering, deduplicação | MAIS COMUM |
+| **Chargeback System** | Integração com bandeira via FTP, processamento batch 4x/dia, CSV, reconciliação | Comum |
+| **Redesign Architecture** | "Como redesenharia a arquitetura do Nubank?" — open-ended | Possível |
 
-### Preparação final (14:00-14:45)
-- [ ] Setup técnico testado (câmera, mic, HackerRank, Zoom)
-- [ ] Água, caderno, caneta na mesa
-- [ ] Reler cola mental (3 coisas que anotou quarta)
-- [ ] Entrar na call 5 min antes
+## Padrões Nubank (USAR na entrevista)
 
-### 15:00 — DOORDASH ROUND 1
-- **System Design (60 min):** problema hipotético. Use framework 7 steps.
-- **Team Building & Hiring (45 min):** STAR stories. "I did", números, max 3 min cada.
+| # | Padrão | O que é | Quando usar |
+|---|--------|---------|-------------|
+| 1 | **Event Sourcing** | Armazena eventos, não estado. Rebuild state do log | Financial audit trail, undo/replay |
+| 2 | **Idempotência** | Correlation IDs, exactly-once processing | Qualquer write operation |
+| 3 | **DLQ** | Dead Letter Queue: eventos falhados vão para retry com metadata | Fault tolerance |
+| 4 | **Circuit Breaker** | Pausa consumo quando serviço externo falha, acumula lag | Integração externa |
+| 5 | **Hexagonal Architecture** | Ports (interfaces) & Adapters (implementações). Core isolado | Toda a codebase Nubank |
+| 6 | **Imutabilidade** | Datomic append-only. Fatos nunca sobrescritos | Financial data, audit |
+| 7 | **Compensating Transactions** | Saga: se step falha → compensation desfaz steps anteriores | Cross-shard operations |
 
-### Pós-entrevista (17:00-17:30)
-- [ ] Anotar imediatamente: o que caiu, o que foi bem, o que foi mal
-- [ ] Respirar. Não julgar. Está feito.
+## Stack Nubank (mencionar naturalmente)
 
-### Noite: Wise final warmup (19:00-20:00) — 1h
-**Método: FALAR + CODIFICAR (leve)**
-- [ ] Reler SOLID principles — 1 frase cada (5 min)
-- [ ] Resolver 1 problema Python simples pensando em voz alta (20 min)
-- [ ] Reler problemas confirmados Wise: circuit breaker, rate limiter, currency converter, intervals, refactoring (10 min)
-- [ ] Pair programming self-talk: "I'm going to start with... because..." — praticar 15 min
-- [ ] Dormir cedo
+| Tech | Uso |
+|------|-----|
+| **Clojure** | 1000+ microserviços |
+| **Kafka** | Sistema nervoso central, event streaming |
+| **Datomic** | Banco imutável append-only ("Git para dados") |
+| **AWS** | S3, DynamoDB, EKS |
+| **Spark/Scala** | Data processing |
+| Hexagonal Arch | Ports & Adapters em tudo |
 
----
+## Números de escala (napkin math)
+- 70M+ usuários
+- 1B eventos/dia → ~12K QPS
+- 100 TB de eventos processados/dia
+- 1000+ microserviços Clojure
+- 5M requests internos/minuto
+- 450M eventos/dia na plataforma de fraude
 
-## SEX 27/FEV — DIA DA ENTREVISTA WISE 🎯
+## Diferença DoorDash vs Nubank
 
-### Manhã (30 min, 9:30-10:00)
-**Método: OLHAR + FALAR**
-- [ ] SOLID: Single Responsibility, Open/Closed, Liskov, Interface Segregation, Dependency Inversion
-- [ ] Falar em voz alta: "Start simple, iterate. Explain everything. Ask the interviewer."
-- [ ] Lembrete: colaboração > velocidade. Perguntar > assumir.
-- [ ] ⚠️ ZERO conteúdo novo.
+| Aspecto | DoorDash | Nubank |
+|---------|----------|--------|
+| Estilo | Solo, você lidera | Colaborativo, vocês desenham juntos |
+| Foco | Escala e performance | **Simplicidade** e sustentabilidade |
+| Comportamento | Liderar com confiança | **Colaborar, perguntar, co-construir** |
+| Resultado | Resposta correta importa | **Processo** de discussão importa |
 
-### Setup (10:00-10:45)
-- [ ] HackerRank CodePair aberto e testado
-- [ ] Python environment pronto
-- [ ] `from collections import Counter, defaultdict, deque` — ter na cabeça
-- [ ] Água, sala quieta, celular silenciado
-- [ ] Entrar 5 min antes
-
-### 11:00 BRT — WISE PAIR PROGRAMMING
-- 60 min, Python, HackerRank CodePair
-- Lembrar: pensar em voz alta, perguntar, colaborar, start simple → iterate
-
-### Pós-entrevista (12:00-12:30)
-- [ ] Anotar: o que caiu, como foi, o que melhorar
-- [ ] Debrief DoorDash + Wise juntos
-
-### Tarde: Transição para próxima fase
-- [ ] Ler MASTER-PREP seção QuintoAndar SD/ML
-- [ ] Descansar — semana foi intensa
+## Perguntas para fazer ao entrevistador
+1. "How do you handle schema evolution in an event-sourced system?"
+2. "What's the biggest operational challenge with 1000+ microservices?"
+3. "How does the hexagonal architecture work in practice at Nubank's scale?"
 
 ---
 
-## FASE 2: QuintoAndar SD/ML + Nubank (28 fev - 4 mar)
+# CODING PATTERNS — Quick Reference (Wise + QA Codility)
 
-### Sáb 28/fev
-**ABSORVER + ESCREVER (2h)**
-- [ ] ML fundamentals: supervised vs unsupervised, bias-variance, overfitting/underfitting
-- [ ] Deep Learning: Transformers, attention, embeddings
-- [ ] Hello Interview: **Payment System** breakdown (prep Nubank)
-- [ ] Escrever flashcards de cada conceito (pergunta → resposta, 1 frase)
+## Pattern Templates Python
 
-**APLICAR (1-2h)**
-- [ ] Quiz ML comigo (flashcards MASTER-PREP.md)
+### HashMap
+```python
+def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        if target - num in seen:
+            return [seen[target - num], i]
+        seen[num] = i
+```
 
-### Dom 1/mar (véspera QA SD/ML)
-**RECALL (30 min)**
-- [ ] Quiz ML + GenAI concepts sem consulta
+### Two Pointers
+```python
+def two_sum_sorted(nums, target):
+    left, right = 0, len(nums) - 1
+    while left < right:
+        s = nums[left] + nums[right]
+        if s == target: return [left, right]
+        elif s < target: left += 1
+        else: right -= 1
+```
 
-**ABSORVER + DESENHAR (1-2h)**
-- [ ] GenAI: LLMs, RAG, fine-tuning, prompt engineering
-- [ ] MLOps: feature stores (Butterfree), model serving, monitoring, drift
-- [ ] Desenhar: ML pipeline end-to-end (data → features → train → serve → monitor)
+### Sliding Window
+```python
+def max_sum_k(arr, k):
+    window = sum(arr[:k])
+    best = window
+    for i in range(k, len(arr)):
+        window += arr[i] - arr[i - k]
+        best = max(best, window)
+    return best
+```
 
-**APLICAR (1-2h)**
-- [ ] **Mock QA SD/ML comigo** (case: ML platform ou RAG system)
+### Binary Search
+```python
+def binary_search(nums, target):
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        mid = left + (right - left) // 2
+        if nums[mid] == target: return mid
+        elif nums[mid] < target: left = mid + 1
+        else: right = mid - 1
+    return -1
+```
 
-### Seg 2/mar — DIA DA ENTREVISTA QA SD/ML
-- [ ] Manhã: revisão leve conceitos ML + stack QA (30 min)
-- [ ] **12h: QuintoAndar System Design/ML** (60min, Google Meet)
-- [ ] Tarde: transição → Nubank Architecture
-- [ ] Event-driven architecture (Kafka deep dive)
-- [ ] Hexagonal Architecture (ports & adapters) — desenhar diagrama
+### Stack
+```python
+def is_valid(s):
+    stack = []
+    pairs = {')': '(', ']': '[', '}': '{'}
+    for ch in s:
+        if ch in pairs:
+            if not stack or stack[-1] != pairs[ch]: return False
+            stack.pop()
+        else:
+            stack.append(ch)
+    return len(stack) == 0
+```
 
-### Ter 3/mar (véspera Nubank)
-**RECALL (30 min)**
-- [ ] Quiz Nubank: event-driven, hexagonal, Simple vs Easy
+### BFS Grid
+```python
+from collections import deque
+def bfs_grid(grid, starts):
+    rows, cols = len(grid), len(grid[0])
+    visited = set(starts)
+    queue = deque(starts)
+    while queue:
+        r, c = queue.popleft()
+        for dr, dc in [(0,1),(0,-1),(1,0),(-1,0)]:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < rows and 0 <= nc < cols and (nr,nc) not in visited:
+                visited.add((nr, nc))
+                queue.append((nr, nc))
+```
 
-**ABSORVER + DESENHAR (1-2h)**
-- [ ] "Simple vs Easy" do Nubank
-- [ ] Imutabilidade + Datomic
-- [ ] Desenhar: event feed system (Kafka → consumers → DB → API)
+### Sorting
+```python
+intervals.sort(key=lambda x: x[0])
+items.sort(key=lambda x: (-x[1], x[0]))  # desc by [1], asc by [0]
+most_frequent = max(freq, key=freq.get)
+```
 
-**APLICAR (1-2h)**
-- [ ] **Mock Nubank Architecture comigo** (colaborativo, estilo Nubank)
+## Pattern Recognition
 
-### Qua 4/mar — DIA DA ENTREVISTA NUBANK
-- [ ] Manhã: revisão leve (30 min)
-- [ ] **10h: Nubank Architecture** (60min, colaborativo, Draw.io/Miro)
-- [ ] Tarde: Debrief + transição coding
+| Sinal no problema | Pattern |
+|-------------------|---------|
+| Array sorted | Two Pointers / Binary Search |
+| Subarray/substring | Sliding Window |
+| Frequency/lookup | HashMap (Counter/defaultdict) |
+| Shortest path / layers | BFS (deque) |
+| Matching/nesting | Stack |
+| Merge overlapping | Sort + merge intervals |
+
+## Python Gotchas
+- `def f(x=[])` → mutable default! Use `def f(x=None): x = x or []`
+- `/` retorna float; use `//` para int division
+- `sort()` in-place retorna None; `sorted()` retorna nova lista
+- NUNCA `list.pop(0)` — use `deque.popleft()` (O(1) vs O(n))
 
 ---
 
-## FASE 3: QuintoAndar Coding + Google (4-13 mar)
+# PREP SCHEDULE — Dia a Dia
 
-### Metodologia Coding
-**Cada dia = 1 pattern. Cada pattern segue:**
-1. **Ler Overview** no Hello Interview (10 min)
-2. **Resolver 2 problemas** no Hello Interview — escrever código, rodar (40 min)
-3. **Review comigo**: Big O, edge cases, otimização (10 min)
+## Sex 27/fev — Descanso + QA ML Início
 
-### Hello Interview Coding — Plano por Dia
+| Horário | Atividade |
+|---------|-----------|
+| Manhã | Descansar. Debrief DoorDash. |
+| Tarde (2-3h) | ML Clássico: revisar flashcards acima + quiz comigo (15 conceitos sem consulta) |
+| Tarde (30min) | Esboçar business case: ranking de imóveis (cold start, features, modelo, métricas) |
+| Noite | Descansar |
 
-| Dia | Pattern | Problemas HI | Relevância |
-|-----|---------|-------------|------------|
-| Qua 4/mar tarde | HashMap + Two Pointers | Two Sum Sorted, Container Most Water, Move Zeroes | ALL companies |
-| Qui 5/mar | Sliding Window + Intervals | Max Sum K, Longest Substring, Merge Intervals | QA Codility + Wise |
-| Sex 6/mar | Stack + Binary Search | Valid Parentheses, Daily Temperatures, Koko Bananas | QA + Google |
-| Sáb 7/mar | BFS + DFS | Level Order, Number of Islands, Rotting Oranges | Google + DoorDash |
-| Dom 8/mar | Trees + Graphs | Max Depth, Validate BST, Course Schedule | Google |
-| Seg 9/mar manhã | REVIEW: resolver 2 problemas fracos + cheatsheet | — | QA Codility |
+## Sáb 28/fev — QA ML Deep + Wise Coding
 
-### Seg 9/mar — DIA DA ENTREVISTA QA CODING
-- [ ] **10h: QuintoAndar Coding** (60min, Codility)
+| Horário | Atividade |
+|---------|-----------|
+| Manhã (2h) | Deep Learning + GenAI + RAG deep dive + MLOps pipeline |
+| Manhã (30min) | Desenhar ML pipeline completo no Figma/draw.io (praticar ferramenta!) |
+| Tarde (1h) | Wise: implementar Circuit Breaker em Python (OOP, do zero, 3 test cases) |
+| Tarde (1h) | Wise: implementar Rate Limiter simples (sliding window ou token bucket) |
+| Noite | Descansar |
 
-### Pós QA: Google Prep (10-?? mar)
-- [ ] DP: Decode Ways, Longest Increasing Subsequence, Job Scheduling
-- [ ] Backtracking: Word Search, Subsets, Generate Parentheses
-- [ ] Heap: Kth Largest, Merge K Sorted Lists
-- [ ] Trie: Implement Trie, Prefix Matching
-- [ ] Greedy: Best Time Buy/Sell Stock, Jump Game
-- [ ] Prefix Sum: Subarray Sum Equals K
+## Dom 1/mar — QA ML Final + Wise + Nubank Início
+
+| Horário | Atividade |
+|---------|-----------|
+| Manhã (1h) | **Mock QA ML comigo** (perguntas técnicas + business case ranking imóveis) |
+| Manhã (30min) | Feedback + rebuild gaps |
+| Tarde (1h) | Wise: Currency Converter Python + Merge Intervals + SOLID de memória |
+| Tarde (1h) | Nubank: Event-driven arch + Hexagonal + Event Sourcing (ler + desenhar) |
+| Noite | Descansar cedo |
+
+## Seg 2/mar — ENTREVISTA QA + Prep Wise/Nubank
+
+| Horário | Atividade |
+|---------|-----------|
+| 11:00-11:30 | Revisão leve: flashcards ML + pipeline desenhado + 3 perguntas preparadas |
+| 11:30 | Desabilitar IA, testar Google Meet, água, sala quieta |
+| **12:00-13:00** | **QUINTOANDAR ML INTERVIEW** |
+| 13:00-13:30 | Debrief: anotar o que caiu, o que foi bem/mal |
+| 14:00-15:00 | **Mock pair programming Wise comigo** (problema surpresa, requirements mudam) |
+| 15:00-16:00 | Nubank: desenhar Event Feed no Miro + trade-offs (Kafka vs SQS, sync vs async) |
+| Noite | Descansar |
+
+## Ter 3/mar — ENTREVISTA WISE + Prep Nubank
+
+| Horário | Atividade |
+|---------|-----------|
+| 07:45-08:10 | SOLID de memória + `from collections import Counter, defaultdict, deque` + "Collaborate. Think aloud." |
+| 08:10-08:25 | HackerRank CodePair testado, Python, sala quieta, água |
+| **08:30-09:30** | **WISE PAIR PROGRAMMING** |
+| 09:30-10:00 | Debrief Wise |
+| 14:00-15:00 | **Mock Nubank Architecture comigo** (colaborativo, 2 eng, Event Feed ou Chargeback) |
+| 15:00-16:00 | Feedback + rebuild + estudar Chargeback flow (FTP→CSV→validate→process→reconcile) |
+| Noite | Descansar cedo |
+
+## Qua 4/mar — ENTREVISTA NUBANK
+
+| Horário | Atividade |
+|---------|-----------|
+| 09:00-09:30 | Revisão leve: padrões Nubank + números de escala + Miro testado |
+| 09:30 | Lembrete: "Collaborate. Ask questions. Stop every 10 min to reassess." |
+| **10:00-11:00** | **NUBANK ARCHITECTURE** |
+| 11:00-11:30 | Debrief |
+| Resto do dia | Descansar |
+
+## Qui 5/mar — Circle (relaxar)
+
+| Horário | Atividade |
+|---------|-----------|
+| TBD | **CIRCLE BATE-PAPO** (informal, sem prep) |
+| Resto | Descansar. Semana acabou. |
 
 ---
 
-## Quick Reference
+# NAPKIN MATH — Quick Reference
 
-### 5 Números DoorDash
-1. **0 → 21 pessoas** em 3 anos (8-11 diretos)
-2. **600+ usuários** na plataforma global
-3. **2M queries/day** + 70K daily executions
-4. **$2M de economia** em otimização
-5. **7+ promoções** patrocinadas + 15+ contratações
+| Metric | Value |
+|--------|-------|
+| 1 day | ~100K seconds (86,400) |
+| 1M req/day | ~10 QPS |
+| 1B req/day | ~10K QPS |
+| 1 KB × 1M | 1 GB |
+| 1 KB × 1B | 1 TB |
+| Redis GET | ~0.1 ms (sub-ms) |
+| DB query (indexed) | 1-10 ms |
+| Postgres | 5-10K writes/sec |
+| Redis | 100K+ ops/sec |
+| Kafka | 1M msg/sec |
 
-### Checklist respostas DoorDash
-- [ ] "Team building" → H1 com contexto + números
-- [ ] "Underperformer" → Dois exemplos (fire + depressão)
-- [ ] "Someone you developed" → SRE → strategic → promoção
-- [ ] "Diversity" → Pipeline + processo estruturado + 4/7 Black/Brown
-- [ ] "Stakeholder conflict" → NA vs Global + RFC process
-- [ ] "Ignore underperformer" → Não. Moral, carga, padrão do time
-- [ ] "Why DoorDash?" → Marketplace 3 lados, escala, data/ML, ownership
+**Fórmulas:**
+- QPS = total_diário ÷ 100K
+- Peak = QPS × 3-5x
+- Concurrent = total_diário × (duração_min / 1440)
+- Storage/ano = registros × tamanho × 365
 
-### Hello Interview Breakdowns — Status
-- [x] Local Delivery Service (Easy)
-- [x] Uber (Hard)
-- [x] Rate Limiter (Medium)
-- [ ] **Job Scheduler** (Hard) ← ter 24/fev
-- [ ] **Payment System** (Hard) ← sáb 28/fev (prep Nubank)
+---
 
-### Hello Interview Patterns — Status
-- [ ] **Dealing with Contention** ← seg 23/fev
-- [ ] **Multi-step Processes** ← seg 23/fev
-- [ ] **Real-time Updates** ← ter 24/fev
-- [ ] Scaling Reads ← quando sobrar tempo
-- [ ] Scaling Writes ← quando sobrar tempo
+# REFERÊNCIA — Arquivos importantes
 
-### Hello Interview Technologies — Status
-- [ ] **Kafka** ← seg 23/fev
-- [ ] **Redis** ← ter 24/fev
-- [ ] **Elasticsearch** ← ter 24/fev
-- [ ] PostgreSQL ← quando sobrar tempo
-- [ ] DynamoDB ← quando sobrar tempo
+| Arquivo | Conteúdo |
+|---------|----------|
+| `companies/quintoandar/research.md` | Research completo QA (processo, stack, perguntas) |
+| `companies/wise/research.md` | Research completo Wise (processo, problemas, stack) |
+| `companies/nubank/research.md` | Research completo Nubank (processo, problemas, stack) |
+| `prep/cheatsheet-sd.md` | SD cheatsheet (framework + problemas praticados DoorDash) |
+| `prep/cheatsheet-leadership.md` | Leadership cheatsheet (STAR stories DoorDash) |
+| `prep/compilado-sd-mocks.md` | Compilado mocks SD com correções |
+| `notes.md` + `notes/` | Notas de estudo detalhadas (Kafka, Redis, patterns) |
+| `MASTER-PREP.md` | Arquivo antigo consolidado (DoorDash + QA + Nubank) — SUPERSEDED por este arquivo |

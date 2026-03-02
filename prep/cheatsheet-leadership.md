@@ -1,3 +1,18 @@
+## Quick Map: Pergunta → História
+
+| Se perguntar... | Usar | Story |
+|-----------------|------|-------|
+| "Build a team" / "Hiring" | **H1** | Team 0→21 |
+| "Cross-team alignment" / "Influence without authority" | **H2 + H6** | Global migration + Stakeholder conflicts |
+| "Difficult conversation" / "Underperformer" / "Firing" | **H3** | First termination |
+| "Developing people" / "Mentoring" / "Promotions" | **H4** | 7+ promotions |
+| "Diversity" / "Inclusive culture" | **H5** | Diversity |
+| "Conflict resolution" / "Disagreement" | **H6** | Stakeholder conflicts |
+| "Biggest achievement" / "Proudest moment" | **H1** | Team 0→21 (numbers!) |
+| "Failure" / "Mistake" / "What went wrong" | **H3** | First termination (delayed action = lesson) |
+
+---
+
 ## STAR Stories — DoorDash Leadership
 
 | # | Story | Pilares DoorDash | Situation | Task | Action | Result (numbers) |
